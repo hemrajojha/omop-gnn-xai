@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="wTRdnt3rXraNEsQs0Bp3" name="Page-1">
+    <mxGraphModel dx="946" dy="1335" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n_patient" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#4A7FBC;strokeColor=#2B5E9E;              fontColor=#ffffff;fontSize=15;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="Patient" vertex="1">
+          <mxGeometry height="118" width="118" x="446" y="-6" as="geometry" />
+        </mxCell>
+        <mxCell id="n_exp" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#E07820;strokeColor=#B85600;              fontColor=#ffffff;fontSize=13;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="GnnExplanation" vertex="1">
+          <mxGeometry height="138" width="138" x="436" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="n_grad" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#7B62B5;strokeColor=#5A44A0;              fontColor=#ffffff;fontSize=12;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="GradientAttributor" vertex="1">
+          <mxGeometry height="122" width="122" x="112" y="347" as="geometry" />
+        </mxCell>
+        <mxCell id="n_attr" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#8B4A2A;strokeColor=#6A2E10;              fontColor=#ffffff;fontSize=11;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="ConceptAttribution" vertex="1">
+          <mxGeometry height="118" width="118" x="115" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="n_gnn" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#C0392B;strokeColor=#922B21;              fontColor=#ffffff;fontSize=13;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="PatientGNN" vertex="1">
+          <mxGeometry height="108" width="108" x="638" y="589" as="geometry" />
+        </mxCell>
+        <mxCell id="n_rule" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#C0399A;strokeColor=#9A2078;              fontColor=#ffffff;fontSize=13;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="ClinicalRule" vertex="1">
+          <mxGeometry height="118" width="118" x="772" y="343" as="geometry" />
+        </mxCell>
+        <mxCell id="n_domain" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#808080;strokeColor=#5A5A5A;              fontColor=#ffffff;fontSize=13;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="OmopDomain" vertex="1">
+          <mxGeometry height="108" width="108" x="776" y="695" as="geometry" />
+        </mxCell>
+        <mxCell id="n_concept" parent="1" style="ellipse;whiteSpace=wrap;html=1;              fillColor=#27AE60;strokeColor=#1A8048;              fontColor=#ffffff;fontSize=13;fontStyle=1;              align=center;verticalAlign=middle;shadow=1;" value="OmopConcept" vertex="1">
+          <mxGeometry height="122" width="122" x="447" y="837" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="n_patient" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=0.5;exitY=1;exitDx=0;exitDy=0;              entryX=0.5;entryY=0;entryDx=0;entryDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;strokeWidth=2;" target="n_exp" value="HAS_EXPLANATION">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="n_exp" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              fontSize=9;fontStyle=0;labelBackgroundColor=none;              exitX=0;exitY=0.3;exitDx=0;exitDy=0;" target="n_grad" value="forExplainer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="n_exp" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_gnn" value="viaModel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="n_exp" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=1;exitY=0.3;exitDx=0;exitDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_rule" value="LINKED_TO_RULE&#xa;VIOLATES_RULE">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="n_exp" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=0.5;exitY=1;exitDx=0;exitDy=0;              entryX=0.5;entryY=0;entryDx=0;entryDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_concept" value="PREDICTED_LABEL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="n_grad" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=0.5;exitY=1;exitDx=0;exitDy=0;              entryX=0.5;entryY=0;entryDx=0;entryDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_attr" value="HAS_ATTRIBUTION">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="n_grad" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_gnn" value="EXPLAINS_OUTPUT_OF">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="n_rule" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=0.5;exitY=1;exitDx=0;exitDy=0;              entryX=0.5;entryY=0;entryDx=0;entryDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_domain" value="GOVERNS_DOMAIN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="n_attr" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_concept" value="FOR_CONCEPT">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="174" y="869.38" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="n_gnn" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_concept" value="CLASSIFIES">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="n_domain" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=0;exitY=1;exitDx=0;exitDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_concept" value="hasConceptType">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="855.54" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="n_attr" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;curved=1;              exitX=1;exitY=0.5;exitDx=0;exitDy=0;              entryX=0;entryY=1;entryDx=0;entryDy=0;              fontSize=9;fontStyle=0;labelBackgroundColor=none;" target="n_rule" value="PASSES_RULE / FAILS_RULE">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="457" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

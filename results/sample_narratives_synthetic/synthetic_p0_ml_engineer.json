@@ -1,0 +1,14 @@
+{
+  "synthetic": true,
+  "persona": "ml_engineer",
+  "patient_idx": 0,
+  "label_name": "Congestive heart failure",
+  "label_concept_id": 319835,
+  "probability": 0.77,
+  "conformance_seal": true,
+  "narrative": "Model: E-TRANS (HGTConv + Transformer), diagnosis head, label_idx for OMOP 319835; logit 1.21, sigmoid 0.77.\n\nAttribution: gradient x input over concept embeddings, top-k per domain.\n- condition: 319835 (0.042), 320128 (0.031), 201826 (0.019)\n- drug: 1308216 (0.018), 1503297 (0.009)\n- procedure: none above threshold\n\nThe graph branch dominates (alpha = 0.8). The highest-attributed concept repeats the target label from the previous visit, so this prediction is largely persistence-driven. Counterfactual: masking 319835 lowers the probability below 0.5 (decision flip).\n\nAll five concepts passed the KG semantic contract before verbalisation.",
+  "attempts": 1,
+  "post_gen_passed": true,
+  "generated_at": "2026-10-16T00:00:00.000000",
+  "note": "SYNTHETIC example for illustration only. Not derived from any real patient; shows the output format of neo4j_xai/narrative_explainer.py."
+}

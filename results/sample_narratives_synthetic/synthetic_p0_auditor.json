@@ -1,0 +1,14 @@
+{
+  "synthetic": true,
+  "persona": "auditor",
+  "patient_idx": 0,
+  "label_name": "Congestive heart failure",
+  "label_concept_id": 319835,
+  "probability": 0.77,
+  "conformance_seal": true,
+  "narrative": "Prediction audit: Congestive heart failure (OMOP 319835), probability 0.77, conformance seal: PASSED (1 attempt).\n\nSemantic contract checks on the top attributed concepts:\n1. Existence: all cited concept_ids (319835, 320128, 201826, 1308216, 1503297) are valid standard concepts in the Athena vocabulary.\n2. Domain: conditions are in the Condition domain and drugs in the Drug domain.\n3. Hierarchy: every condition traces to a SNOMED CT ancestor via concept_ancestor.\n4. Relevance: each cited concept appears in the patient's attribution set; no concept was introduced by the language model.\n\nPost-generation check: no fabricated clinical terms detected. The narrative cites only validated evidence.",
+  "attempts": 1,
+  "post_gen_passed": true,
+  "generated_at": "2026-10-16T00:00:00.000000",
+  "note": "SYNTHETIC example for illustration only. Not derived from any real patient; shows the output format of neo4j_xai/narrative_explainer.py."
+}

@@ -1,0 +1,14 @@
+{
+  "synthetic": true,
+  "persona": "clinician",
+  "patient_idx": 0,
+  "label_name": "Congestive heart failure",
+  "label_concept_id": 319835,
+  "probability": 0.77,
+  "conformance_seal": true,
+  "narrative": "Predicted next-visit diagnosis: Congestive heart failure (SNOMED 42343007; OMOP 319835), probability 0.77.\n\nKey evidence from the record:\n- Conditions: a prior Congestive heart failure diagnosis at the most recent visit and long-standing Essential hypertension (SNOMED 59621000) carry the highest attribution. Type 2 diabetes mellitus (SNOMED 44054006) contributes moderately.\n- Medications: lisinopril (RxNorm 29046) and metformin (RxNorm 6809) are consistent with managed hypertension and diabetes.\n\nAll cited concepts passed the ontology checks: each exists in the OMOP vocabulary, sits in the expected domain, and links to cardiovascular or metabolic disorders in the SNOMED hierarchy.\n\nConsider: review volume status and cardiac function at the next encounter. This is a model estimate to support, not replace, clinical judgement.",
+  "attempts": 1,
+  "post_gen_passed": true,
+  "generated_at": "2026-10-16T00:00:00.000000",
+  "note": "SYNTHETIC example for illustration only. Not derived from any real patient; shows the output format of neo4j_xai/narrative_explainer.py."
+}

@@ -1,0 +1,35 @@
+# Patient data — MIMIC-IV DUA protected
+neo4j_xai/patients/
+*.json.gz
+
+# Generated results — not published for now (patient-level outputs are never published).
+# Only the synthetic format examples are tracked.
+results/*
+!results/sample_narratives_synthetic/
+neo4j_xai/results/
+
+# Credentials
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Checkpoints / model weights
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

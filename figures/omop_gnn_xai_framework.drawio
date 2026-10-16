@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram id="omop-gnn-xai" name="OMOP GNN XAI Framework">
+    <mxGraphModel dx="2230" dy="1403" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="compA_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=40;arcSize=2;" value="" vertex="1">
+          <mxGeometry height="322" width="470" x="120" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="compA_label" parent="1" style="text;html=1;align=center;verticalAlign=top;spacingTop=4;fontColor=#336699;" value="&lt;b&gt;Evidence Generation&lt;/b&gt;&lt;br&gt;&lt;i&gt;OMOP CDM Pipeline + GNN Predictive Model + Attribution&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="470" x="120" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gnn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;GNN Model&lt;/b&gt;&lt;br/&gt;E-TRANS&lt;br/&gt;(HGTConv + Transformer)" vertex="1">
+          <mxGeometry height="75" width="140" x="195" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="patientgraph" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;b&gt;OMOP CDM&lt;/b&gt;&lt;br&gt;Patient Graph&lt;br&gt;(visit · condition&lt;br&gt;procedure · drug)" vertex="1">
+          <mxGeometry height="115" width="122.5" x="203.75" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="attribution" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;Gradient Attribution&lt;/b&gt;&lt;br/&gt;L1 Norm of Gradient&lt;br/&gt;Top-k Concept Nodes&lt;br/&gt;per Clinical Domain" vertex="1">
+          <mxGeometry height="80" width="140" x="420" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="compC_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=40;arcSize=2;" value="" vertex="1">
+          <mxGeometry height="140" width="940" x="120" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="compC_label" parent="1" style="text;html=1;align=center;verticalAlign=top;spacingTop=4;fontColor=#336699;" value="&lt;b&gt;Verbalisation&lt;/b&gt;&lt;br&gt;&lt;i&gt;Narrative Explainer&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="940" x="120" y="401" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="55" width="110" x="210" y="461" as="geometry" />
+        </mxCell>
+        <mxCell id="narrative" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="&lt;b&gt;Narrative Explainer&lt;/b&gt;&lt;br/&gt;(Ontology-Constrained&lt;br/&gt;Generation)" vertex="1">
+          <mxGeometry height="75" width="155" x="515" y="451" as="geometry" />
+        </mxCell>
+        <mxCell id="compB_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=40;arcSize=2;" value="" vertex="1">
+          <mxGeometry height="322" width="460" x="600" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="compB_label" parent="1" style="text;html=1;align=center;verticalAlign=top;spacingTop=4;fontColor=#336633;" value="&lt;b&gt;Evidence Governance&lt;/b&gt;&lt;br&gt;&lt;i&gt;Athena Vocabularies + OMOP Knowledge Graph + Semantic Contract&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="460" x="600" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="athena" parent="1" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;size=0;rounded=1;" value="&lt;b&gt;Athena&lt;br/&gt;Vocabularies&lt;/b&gt;&lt;br/&gt;SNOMED CT&lt;br/&gt;RxNorm · LOINC" vertex="1">
+          <mxGeometry height="80" width="140" x="880" y="147.25" as="geometry" />
+        </mxCell>
+        <mxCell id="omopkg" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;b&gt;OMOP&lt;br&gt;Knowledge Graph&lt;/b&gt;&lt;br&gt;KG embeddings&lt;br&gt;+ concept hierarchies" vertex="1">
+          <mxGeometry height="115" width="122.5" x="670" y="129.75" as="geometry" />
+        </mxCell>
+        <mxCell id="contract" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="&lt;b&gt;Semantic Contract&lt;/b&gt;&lt;br/&gt;(OMOP Validation:&lt;br/&gt;concept plausibility&lt;br/&gt;&amp;amp; hierarchy constraints)" vertex="1">
+          <mxGeometry height="80" width="165" x="648.75" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="clinician" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=12;" value="&lt;b&gt;Clinician&lt;/b&gt;&lt;br&gt;/ &lt;b&gt;Decision Maker&lt;/b&gt;" vertex="1">
+          <mxGeometry height="55" width="130" x="890" y="461" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pg_gnn" edge="1" parent="1" source="patientgraph" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;fontStyle=1;exitPerimeter=0;" target="gnn" value="&lt;span&gt;patient graph&lt;/span&gt;">
+          <mxGeometry relative="1" x="-0.2021" y="-26" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="147.5000000000001" y="265" as="sourcePoint" />
+            <mxPoint x="147.5000000000001" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gnn_attr" edge="1" parent="1" source="gnn" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;exitX=1.001;exitY=0.574;exitDx=0;exitDy=0;entryX=0.006;entryY=0.562;entryDx=0;entryDy=0;fontStyle=1;labelBackgroundColor=none;exitPerimeter=0;entryPerimeter=0;" target="attribution" value="(1) prediction score">
+          <mxGeometry relative="1" x="-0.0988" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_kg_contract_ingest" edge="1" parent="1" source="attribution" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;entryX=0.008;entryY=0.436;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.001;exitY=0.557;exitDx=0;exitDy=0;exitPerimeter=0;labelBackgroundColor=none;fontStyle=1" target="omopkg" value="(2) ingest">
+          <mxGeometry relative="1" x="0.0996" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="710" y="167.5" as="sourcePoint" />
+            <mxPoint x="721.04" y="343.645" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_contract_kg_retrieve" edge="1" parent="1" source="omopkg" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;labelBackgroundColor=none;fontStyle=1;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="contract" value="(3) retrieve">
+          <mxGeometry relative="1" x="-0.0811" y="-23" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="731.25" y="260" />
+              <mxPoint x="731.25" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_contract_narrative" edge="1" parent="1" source="contract" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.996;entryY=0.373;entryDx=0;entryDy=0;labelBackgroundColor=none;fontStyle=1;entryPerimeter=0;" target="narrative" value="(4) validated bundle">
+          <mxGeometry relative="1" x="-0.2638" y="39" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="920" y="842.5" as="sourcePoint" />
+            <mxPoint x="1183.75" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_llm_narrative" edge="1" parent="1" source="llm" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=none;fontStyle=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="narrative" value="reason / generate">
+          <mxGeometry relative="1" x="-0.0414" y="7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_narrative_clinician" edge="1" parent="1" source="narrative" style="endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;html=1;fontSize=8;exitX=1.004;exitY=0.547;exitDx=0;exitDy=0;labelBackgroundColor=none;fontStyle=1;exitPerimeter=0;entryX=0.004;entryY=0.557;entryDx=0;entryDy=0;entryPerimeter=0;" target="clinician" value="(5) clinical narrative">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="671.5" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QCAgPFtXqgB5bAgTUCgM-8" edge="1" parent="1" source="athena" style="endArrow=classic;html=1;rounded=0;exitX=0.007;exitY=0.417;exitDx=0;exitDy=0;entryX=0.997;entryY=0.437;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="omopkg" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1000" y="82" as="sourcePoint" />
+            <mxPoint x="1050" y="32" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QCAgPFtXqgB5bAgTUCgM-9" connectable="0" parent="QCAgPFtXqgB5bAgTUCgM-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontStyle=1" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;schema&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0807" as="geometry">
+            <mxPoint x="3" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

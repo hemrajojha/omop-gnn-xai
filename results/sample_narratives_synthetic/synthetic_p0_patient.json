@@ -1,0 +1,14 @@
+{
+  "synthetic": true,
+  "persona": "patient",
+  "patient_idx": 0,
+  "label_name": "Congestive heart failure",
+  "label_concept_id": 319835,
+  "probability": 0.77,
+  "conformance_seal": true,
+  "narrative": "Our computer model looked at your past hospital visits and estimates that heart failure is likely to be noted again at your next visit (about 77 out of 100 similar patients).\n\nThe main reasons were a recent heart failure diagnosis, long-term high blood pressure and diabetes. Your blood pressure and diabetes medicines were also taken into account.\n\nThis is not a diagnosis. Please talk with your care team about what it means for you.",
+  "attempts": 1,
+  "post_gen_passed": true,
+  "generated_at": "2026-10-16T00:00:00.000000",
+  "note": "SYNTHETIC example for illustration only. Not derived from any real patient; shows the output format of neo4j_xai/narrative_explainer.py."
+}
