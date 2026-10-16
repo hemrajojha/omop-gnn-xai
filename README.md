@@ -183,7 +183,7 @@ python neo4j_xai/render_results.py
 - Generated narrative text
 - Number of generation attempts and post-generation validation status
 
-Narratives, evaluation results and per-patient outputs for real MIMIC-IV patients are not published, because the MIMIC-IV data use agreement does not allow sharing patient-level data. Running `neo4j_xai/narrative_explainer.py` and `evaluate_narratives.py` with your own credentialed access regenerates them locally (`results/sample_narratives/` and `results/evaluation.json`, both gitignored).
+Narratives, evaluation results and per-patient outputs for real MIMIC-IV patients are not published, because the MIMIC-IV data use agreement does not allow sharing patient-level data. Running `neo4j_xai/narrative_explainer.py` and `evaluate_narratives.py` with credentialed access regenerates them locally (`results/sample_narratives/` and `results/evaluation.json`).
 
 ---
 
@@ -202,21 +202,6 @@ Explanations with no violations receive a **conformance seal**.
 
 ---
 
-## Citation
-
-If you use this code or results, please cite:
-
-```bibtex
-@article{ojha2026omopgnnxai,
-  title   = {Ontology-Grounded Explainable AI to Support GNN-Based Clinical Decision Making},
-  author  = {Ojha, Hemraj and others},
-  journal = {IEEE Journal of Biomedical and Health Informatics},
-  year    = {2026},
-  note    = {Under review}
-}
-```
-
----
 
 ## Data Access
 
