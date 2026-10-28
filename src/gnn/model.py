@@ -444,8 +444,8 @@ class PatientGNN(nn.Module):
                                ("drug",      self.drug_embed)]:
             if domain in data.node_types and data[domain].x.size(0) > 0:
                 idx = data[domain].x[:, 0].long().clamp(0, embed.weight.size(0) - 1)
-                emb = embed(idx)                     # [N_domain, kg_embed_dim]
-                emb.retain_grad()
+                # Detached leaf with grad: works with frozen (KG) and trainable embeddings
+                emb = embed(idx).detach().requires_grad_(True)   # [N_domain, kg_embed_dim]
                 embed_params[domain] = (emb, idx)
 
         # Monkey-patch forward to use pre-computed embeddings with grad
