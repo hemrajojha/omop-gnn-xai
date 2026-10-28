@@ -67,8 +67,8 @@ omop-gnn-xai/
 - PostgreSQL 14+ (or Docker)
 - Neo4j 5.20.0+
 - An [Anthropic API key](https://console.anthropic.com/)
-- MIMIC-IV access via [PhysioNet](https://physionet.org/content/mimiciv/) (credentialed)
-- Athena vocabulary download: SNOMED CT, RxNorm, LOINC ([athena.ohdsi.org](https://athena.ohdsi.org/))
+- MIMIC-IV **v3.1** access via [PhysioNet](https://physionet.org/content/mimiciv/) (credentialed)
+- Athena vocabularies ([athena.ohdsi.org](https://athena.ohdsi.org/)), release **v5.0 27-FEB-26** used for the paper. Select at least: SNOMED, ICD9CM, ICD10CM, ICD9Proc, ICD10PCS, RxNorm, RxNorm Extension, NDC, ATC, LOINC, UCUM (plus the default domain vocabularies). CPT4 is optional and needs a UMLS licence.
 
 Install Python dependencies (tested with PyTorch 2.5.1, CUDA 12.4, PyTorch Geometric 2.7.0, PyKEEN 1.11.1). Install PyTorch for your platform first, then the rest:
 
@@ -121,25 +121,37 @@ bash etl/run/run_pipeline.sh
 
 ### 3. Download Athena vocabularies
 
-Download SNOMED CT, RxNorm, and LOINC from [athena.ohdsi.org](https://athena.ohdsi.org/) and place the CSV files in a local directory. Update the path in `etl/staging/01_load_vocab.sql`.
+Download the vocabularies listed in [Requirements](#requirements) from [athena.ohdsi.org](https://athena.ohdsi.org/) and place the CSV files in a local directory.
+
+**Paths to edit before running.** File paths in the SQL are placeholders: `etl/staging/00_load_raw_csv.sql` (MIMIC-IV `hosp/` and `icu/` folders in each `\COPY` line), `etl/staging/01_load_vocab.sql` (vocabulary CSVs), and `etl/export/01–03` (`'C:/omop_export/...'` in each `COPY ... TO`; server-side `COPY` writes on the database server and needs superuser rights, use `\copy` in `psql` to write locally).
 
 ### 4. Build patient graphs
 
 ```bash
-python src/preprocess/build_patient_graphs.py --mimic4_root /path/to/mimic4
+python src/preprocess/build_patient_graphs.py     --data_dir /path/to/omop_export     --out_dir  /path/to/processed     --min_visits 2
 ```
 
-### 5. Train RotatE KG embeddings
+Outputs `patient_graphs.pt`, `concept_vocab.json`, `label_vocab.json`.
+
+### 5. Train RotatE KG embeddings (optional)
+
+Only needed for the KG-embedding variant; the configuration used for the explanations (E11) does not use it.
 
 ```bash
-python src/kg/train_rotate.py
+python src/kg/train_rotate.py     --triples_path /path/to/omop_export/kg_triples.csv     --vocab_path   /path/to/processed/concept_vocab.json     --out_dir      /path/to/processed/kg_embeddings
 ```
 
 ### 6. Train the GNN
 
+Best configuration (E11, macro AUROC 0.909):
+
 ```bash
-python src/gnn/train.py --mimic4_root /path/to/mimic4 --epochs 50
+python src/gnn/train.py     --task diagnosis     --data_source omop     --graphs_path /path/to/processed/patient_graphs.pt     --vocab_path  /path/to/processed/concept_vocab.json     --no_kg     --pw_mode     sqrt5     --out_dir     /path/to/models     --device      cuda
 ```
+
+### 6b. Generate attributions
+
+The attribution scripts are currently in the companion repository [standardized-omop-gnn](https://github.com/hemrajojha/standardized-omop-gnn): `analysis/batch_explain.py` computes per-patient attributions on the test set (use a checkpoint trained with `--no_kg`), and `analysis/query_concepts.py --attribution <file>` adds concept names and SNOMED ancestors, writing `<file>_enriched.json`. Step 7 loads the folder of enriched files.
 
 ### 7. Load KG and run semantic contract validation
 
@@ -148,7 +160,7 @@ python src/gnn/train.py --mimic4_root /path/to/mimic4 --epochs 50
 cypher-shell -u neo4j -p <password> -f neo4j_xai/ontology_schema.cypher
 
 # Load attribution results and validate against semantic contract
-python neo4j_xai/omop_gnn_neo_loader.py
+python neo4j_xai/omop_gnn_neo_loader.py --json_dir /path/to/enriched
 ```
 
 ---
@@ -220,5 +232,4 @@ Patient-level data (MIMIC-IV) cannot be shared under the PhysioNet Data Use Agre
 
 ## License
 
-Code: MIT License  
 Data: Subject to [PhysioNet Credentialed Health Data License](https://physionet.org/content/mimiciv/view-license/) and MIMIC-IV Data Use Agreement
